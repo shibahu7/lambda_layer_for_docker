@@ -13,7 +13,7 @@ RUN apk add aws-cli curl unzip
 
 RUN mkdir -p /opt
 
-RUN curl $(aws lambda get-layer-version-by-arn --arn 'arn:aws:lambda:ap-northeast-1:133490724326:layer:AWS-Parameters-and-Secrets-Lambda-Extension:2' --query 'Content.Location' --output text) --output layer.zip && \
+RUN curl $(aws lambda get-layer-version-by-arn --arn 'arn:aws:lambda:ap-northeast-1:133490724326:layer:AWS-Parameters-and-Secrets-Lambda-Extension:11' --query 'Content.Location' --output text) --output layer.zip && \
     unzip layer.zip -d /opt && \
     rm layer.zip
 
@@ -28,6 +28,7 @@ RUN sed -n 's/^\(.*\)==\(.*\)$/\1==\2/p' requirements.lock > requirements.txt &&
     pip install --upgrade pip && \
     pip install -r requirements.txt
 
+COPY Credentials ${LAMBDA_TASK_ROOT}/Credentials
 
 # 実行する lambda ファイル
 COPY lambda.py ${LAMBDA_TASK_ROOT}

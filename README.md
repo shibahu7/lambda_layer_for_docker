@@ -2,6 +2,10 @@
 
 ## Dockerfileにlambdaの拡張機能を加えてデプロイしたところ、権限は足りてると思われるのにエラーになる
 
+- handler内での呼び出し → ok
+- handler外での呼び出し、但し同一ファイル内 → ok
+- 別ファイルからの呼び出し → *No*
+
 ```error.sh
 [AWS Parameters and Secrets Lambda Extension] 2024/06/26 02:34:50 PARAMETERS_SECRETS_EXTENSION_LOG_LEVEL is not present. Log level set to info.
 [AWS Parameters and Secrets Lambda Extension] 2024/06/26 02:34:50 INFO Systems Manager Parameter Store and Secrets Manager Lambda Extension 1.0.94
