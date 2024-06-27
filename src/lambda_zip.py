@@ -5,7 +5,7 @@ from requests.exceptions import HTTPError, ConnectionError, Timeout, RequestExce
 # TODO: handle 関数外で外部モジュールのssm取得関数読み込み（import時に実行される）
 # from credentials.credential import credential
 # TODO: handle 関数外で外部モジュールのssm取得関数読み込み（import時に実行されない）
-# from credentials.credential import create_credential
+# from credentials.credential_factory import create_credential
 
 
 def _get_google_service_account_path_from_ssm(key_name):
@@ -51,8 +51,8 @@ def _get_google_service_account_path_from_ssm(key_name):
 def lambda_handler(event, context):
     # TODO: handle 関数内で外部モジュールのssm取得関数読み込み（import時に実行される）
     # from credentials.credential import credential
-    # TODO: handle 関数内で外部モジュールのssm取得関数読み込み（import時に実行されない）
-    # from credentials.credential import create_credential
+    # TODO: handle 関数外で外部モジュールのssm取得関数読み込み（import時に実行されない）
+    # from credentials.credential_factory import create_credential
     # gcp_sa_res = create_credential()
 
     key_name = os.environ.get("AWS_SSM_KEY_NAME")

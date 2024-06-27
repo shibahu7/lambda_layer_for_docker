@@ -32,6 +32,9 @@ def _get_google_service_account_path_from_ssm(key_name):
     return None  # エラー発生時にはNoneを返す
 
 
-credential = {
-    "gcp": _get_google_service_account_path_from_ssm(os.environ.get("AWS_SSM_KEY_NAME"))
-}
+def create_credential():
+    return {
+        "gcp": _get_google_service_account_path_from_ssm(
+            os.environ.get("AWS_SSM_KEY_NAME")
+        )
+    }
