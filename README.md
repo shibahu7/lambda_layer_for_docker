@@ -3,7 +3,7 @@
 ## 【解決】Dockerfileにlambdaの拡張機能を加えてデプロイしたところ、権限は足りてると思われるのにエラーになる
 
 ```
-lambdaのエントリーポイントである関数（主に `lambda_handler`）外で実行されるパラメータストアへのリクエストはすべて400 bad requestになる.
+lambdaのエントリーポイントである関数（主に `lambda_handler`）外で実行されるパラメータストアへのリクエストはすべて400 bad requestになる. ただし、なぜそうなのかは全く不明.
 
 解決策として下記があげられる
 - `lambda_handler` 関数内でパラメータストアへのリクエストを行う
@@ -12,6 +12,14 @@ lambdaのエントリーポイントである関数（主に `lambda_handler`）
     - *importされた時点でファイル内のトップレベルのコードはすべて実行される*
 	- つまり、別モジュールをimportする時は大体`lambda_handler` 関数外で行うが、パラメータストアへのリクエストがトップレベルで書かれている場合、import時点で処理が走るためうまく動作しなくなる → 従って、`lambda_handler` 内でimportすればよいという、ちょっと不思議な解決方法をとってしまいがち
 ```
+
+- 関連しそうな記事
+
+https://qiita.com/hayate_h/items/00c6cf92b0dd7886c1f6
+
+https://stackoverflow.com/questions/76878491/lambda-function-invoked-before-secrets-extension-initialized
+
+### 試したこと
 
 - handler内での呼び出し → ok
 - handler外での呼び出し、但し同一ファイル内 → ok
