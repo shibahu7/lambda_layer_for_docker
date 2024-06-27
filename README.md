@@ -5,6 +5,7 @@
 - handler内での呼び出し → ok
 - handler外での呼び出し、但し同一ファイル内 → ok
 - 別ファイルからの呼び出し → *No*
+    - 但し、自作モジュールの呼び出しをhandler内で行うと問題ない
 
 ```error.sh
 [AWS Parameters and Secrets Lambda Extension] 2024/06/26 02:34:50 PARAMETERS_SECRETS_EXTENSION_LOG_LEVEL is not present. Log level set to info.
