@@ -28,7 +28,7 @@ RUN sed -n 's/^\(.*\)==\(.*\)$/\1==\2/p' requirements.lock > requirements.txt &&
     pip install --upgrade pip && \
     pip install -r requirements.txt
 
-COPY Credentials ${LAMBDA_TASK_ROOT}/Credentials
+COPY Credentials /opt/python/Credentials
 
 # 実行する lambda ファイル
 COPY lambda.py ${LAMBDA_TASK_ROOT}
