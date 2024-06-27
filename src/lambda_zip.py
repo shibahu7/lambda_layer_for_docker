@@ -5,7 +5,7 @@ from requests.exceptions import HTTPError, ConnectionError, Timeout, RequestExce
 # TODO: handle 関数外で外部モジュールのssm取得関数読み込み（import時に実行される）
 # from credentials.credential import credential
 # TODO: handle 関数外で外部モジュールのssm取得関数読み込み（import時に実行されない）
-# from credentials.credential import credential
+# from credentials.credential import create_credential
 
 
 def _get_google_service_account_path_from_ssm(key_name):
